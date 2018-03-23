@@ -114,7 +114,7 @@ chappie.on("chat", function(channel, user, message, self) {
             } else if(commands[0] == "!elo") {
                 elo()
             } else if(commands[0] == "!author") {
-                chappie.say("Chappie was made by @BakedPuma")
+                author()
             }else if(commands[0] == "!sillazo") {
                 sillazo(user['display-name'], commands[1], user['subscriber'])
             } else if(commands[0] == "!report") {
@@ -126,7 +126,7 @@ chappie.on("chat", function(channel, user, message, self) {
             }
     
             // Comprobamos si alguien ha saludado
-        } else if(message.toLowerCase().includes('hola') || message.toLowerCase().includes('buenos dias') || message.toLowerCase().includes('buenas tardes')) {
+        } else if(message.toLowerCase().includes('hola') || message.toLowerCase().includes('holi') || message.toLowerCase().includes('buenos dias') || message.toLowerCase().includes('buenas tardes')) {
             saludar(user['display-name'])
             // Comandos de mantenimiento
         } else if(message == "ping") {
@@ -156,6 +156,9 @@ if(chappie.readyState() == "CLOSED") {
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
+author = () => {
+    chappie.say(owner, "Chappie was made by @BakedPuma")
+}
 
 ping = (usuario) => {
     // Rutina de mantenimiento y debug
