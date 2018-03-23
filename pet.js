@@ -109,8 +109,8 @@ chappie.on("chat", function(channel, user, message, self) {
             console.log("[*] Comando detectado: " + message)
             // Separamos el comando de los argumentos (si los tiene)
             var commands = message.split(" ")
-            if(commands[0] == "!combate") {
-                //combate()
+            if(commands[0] == "!combate" && user['broadcaster']) {
+                combate()
             } else if(commands[0] == "!elo") {
                 elo()
             } else if(commands[0] == "!sillazo") {
@@ -203,7 +203,7 @@ sillazo = (usuario, victima, isSub) => {
                 
             ]
             chappie.action(owner, randomQuote(quotes))
-        } else if (victima.toLowerCase() == chappie.getUsername()) {
+        } else if (victima.toLowerCase() == chappie.getUsername().toLowerCase()) {
             var quotes = [
                 'no es tonto. No se va a lanzar una silla a sí mismo',
                 'está tan confuso que se hirió a si mismo',
@@ -247,8 +247,8 @@ report = (usuario, victima) => {
     if(victima == undefined) {
         chappie.action(owner, randomQuote(quotes))
     } else {
-        quotes[quote.length] = 'admite que  hay que reportar a ' + victima
-        quotes[quote.length] = 'piensa que ' + victima + ' no se merece ese report'
+        quotes[quotes.length] = 'admite que  hay que reportar a ' + victima
+        quotes[quotes.length] = 'piensa que ' + victima + ' no se merece ese report'
         chappie.action(owner, randomQuote(quotes))
     }
 }
@@ -320,6 +320,7 @@ finalizarCombate = () => {
     }
     inCombat = false
     chappie.followersonlyoff(owner)
+    window.setTimeout(combate, 60 * 1000 * 5)
 }
 
 lider = () => {
