@@ -43,4 +43,33 @@ npm install --save-dev electron-packager
 npm run-script build
 ```
 
+:hamster: Pets and more Pets!
+----
+If you want to change the default pet, you should download three GIFs like this and rename it to **[animal]_[action].gif**
+
+| panda_idle.gif | panda_attack.gif | panda_greetings.gif |
+|:--:|:--:|:--:|
+| ![Panda Idle](https://cdn.rawgit.com/CosasDePuma/Chappie/821bea83/public/gif/panda_idle.gif) | ![Panda Attack](https://cdn.rawgit.com/CosasDePuma/Chappie/821bea83/public/gif/panda_attack.gif) | ![Panda Greetings](https://cdn.rawgit.com/CosasDePuma/Chappie/821bea83/public/gif/panda_greetings.gif) |
+
+GIFs must be deposited in the `public/gif` folder.
+Current actions available are: **IDLE**, **ATTACK**, **GREETINGS**
+
+Finally, line `pet.js:7` must be changed with your animal name:
+```js
+var animal = "animal_name"
+```
+
+:earth_africa: Scheme of contents
+
+```js
+Chappie
+|_ public
+  |_ gif
+  |_ ttf
+|_ main.js
+|_ pet.js
+|_ pet.html
+|_ package.json
+```
+
 Please contact with [Kike Puma](https://linkedin.com/in/kikepuma) if you need more information.
