@@ -60,7 +60,7 @@ var animal = "animal_name"
 ```
 
 :earth_africa: Scheme of contents
-
+----
 ```js
 Chappie
 |_ public
