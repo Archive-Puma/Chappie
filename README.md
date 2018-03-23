@@ -35,7 +35,7 @@ electron .
 ```
 
 :hammer: Compilation
-
+----
 You can create an executable according to your Operating System by installing and running `electron-packager` module:
 
 ```js
