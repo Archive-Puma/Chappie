@@ -1,4 +1,4 @@
-// Conseguimos los elementos de la ventana
+﻿// Conseguimos los elementos de la ventana
 const msg = document.getElementById('msg')
 const pet = document.getElementById('pet')
 
@@ -96,7 +96,7 @@ var chappie = new tmi.client(options);
 // Rutina al conectarse
 chappie.on("connected", function(address, port) {
     console.log("[*] Bot conectado")
-    chappie.say(owner, "Chappie... estar... ¡vivo!")
+    //chappie.say(owner, "Chappie... estar... ¡vivo!")
 })
 
 // Rutina al leer un mensaje del chat
