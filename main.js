@@ -24,3 +24,11 @@ function createWindow() {
 }
 
 app.on('ready', createWindow)
+
+
+
+/* TO-DO */
+
+// !cuadrilatero @1 @2 @3 @4
+// !time
+// !1vs1 @a -> !aceptar / !ignorar
