@@ -4,13 +4,14 @@
   "description": "A new Twitch bot",
   "main": "main.js",
   "scripts": {
-    "test": "electron .",
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-packager ."
   },
   "author": "cosasdepuma",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^1.8.4"
+    "electron": "^1.8.4",
+    "electron-packager": "^11.1.0"
   },
   "dependencies": {
     "tmi.js": "^1.2.1"

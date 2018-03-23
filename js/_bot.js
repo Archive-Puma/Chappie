@@ -24,23 +24,36 @@ const options = {
 // Creamos el cliente
 var bot = new tmi.client(options);
 
+// Variables
+var state = "idle"
+const texto = document.getElementById("texto")
+
 // Rutina al conectarse
 bot.on("connected", function(address, port) {
-    console.log("[^] Bot conectado")
-    bot.say(owner, "Chappie... estar... ¡vivo!")
+    console.log("[*] Bot conectado")
+    //bot.say(owner, "Chappie... estar... ¡vivo!")
 })
 
 bot.on("chat", function(channel, user, message, self) {
     if(message[0] === '!') {
         var commands = message.split(" ")
-        console.log("[^] Comando detectado: " + commands)
+        console.log("[*] Comando detectado: " + commands)
         if(commands[0] === "!report") {
             report(user['display-name'], commands[1])
+        } else if (commands[0] === "!ping") {
+            bot.say(owner, "pong")
+        } else if (commands[0] === "!pong") {
+            bot.say(owner, "ping")
         } else if(commands[0] === "!elo") {
             elo()
         } else if(commands[0] === "!sillazo") {
             sillazo(user['display-name'], commands[1], user['subscriber'])
         }
+    } else if(message.toLowerCase().includes('hola')) {
+        saludar(user['display-name'])
+    } else {
+        console.log(message)
+        texto.innerHTML = message
     }
 })
 
@@ -67,7 +80,14 @@ function report(usuario, victima) {
 // ---------------------------------------------------------------------------------------
 
 function elo() {
-    bot.say(owner, "Suraei es Bronce III, pero juega como si fuera Madera V")
+    current_elo = 'Bronce III'
+    var quote = [
+        'Suraei es ' + current_elo  + ', pero juega como si fuera Madera V',
+        current_elo,
+        'Riot opina que es ' + current_elo,
+        'Camino a Diamante, pero de momento es ' + current_elo
+    ]
+    bot.say(owner, quote[Math.floor(Math.random() * (quote.length))])
 }
 
 // ---------------------------------------------------------------------------------------
@@ -82,6 +102,29 @@ function sillazo(usuario, victima, isSub) {
     } else {
         bot.action(owner, " sólo da sillazos si se lo manda un sub")
     }
+}
+
+// ---------------------------------------------------------------------------------------
+
+function ping() {
+    bot.say(owner, "pong")
+}
+
+function pong() {
+    bot.say(owner, "ping")
+}
+
+// ---------------------------------------------------------------------------------------
+
+function saludar(usuario) {
+    var quote = [
+        'Bueno verte por aquí ' + usuario,
+        'Hola ' + usuario,
+        '¿Eres nuevo por aquí, ' + usuario + '? No me suenas Kappa',
+        //'Buenas ' + usuario + ', espero que seas mejor viewer que @sw4t_alan',
+        '¡Hola ' + usuario + '! Mi vida era vacía sin ti...',
+    ]
+    bot.say(owner, quote[Math.floor(Math.random() * (quote.length))])
 }
 
 // ---------------------------------------------------------------------------------------
