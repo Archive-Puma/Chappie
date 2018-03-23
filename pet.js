@@ -113,7 +113,9 @@ chappie.on("chat", function(channel, user, message, self) {
                 combate()
             } else if(commands[0] == "!elo") {
                 elo()
-            } else if(commands[0] == "!sillazo") {
+            } else if(commands[0] == "!author") {
+                chappie.say("Chappie was made by @BakedPuma")
+            }else if(commands[0] == "!sillazo") {
                 sillazo(user['display-name'], commands[1], user['subscriber'])
             } else if(commands[0] == "!report") {
                 report(user['display-name'], commands[1])
