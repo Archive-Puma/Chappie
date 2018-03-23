@@ -8,7 +8,8 @@ function createWindow() {
     win = new BrowserWindow({
         width: 800, height: 600,
         titleBarStyle: 'hidden',
-        show: false, frame: false
+        show: false, frame: false,
+        transparent: true, resizable: false
     })
 
     win.loadURL(url.format({
