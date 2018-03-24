@@ -227,7 +227,7 @@ sillazo = (usuario, victima, isSub) => {
                 usuario + ' está muy agresivo ultimamente con los sillazos, asique las autoridades lo llevan a un correccional',
                 usuario + ' coje la silla mas bonita que encuentra y la destroza encima de la cara de ' + victima ,
                 usuario + ' lanza una silla a ' + victima + ' pero al final ' + victima + ' consigue esquivar el sillazo y le da a ' + usuario + ' de su propia medicina ',
-                usuario + ' le da un sillazo a ' + victima ' y le deja la cara tan fea que la sociedad ya no lo acepta',
+                usuario + ' le da un sillazo a ' + victima + ' y le deja la cara tan fea que la sociedad ya no lo acepta',
                 usuario + ' en un intento de darle un sillazo a ' + victima + ' es capturado por un grupo de seguidores pro piña y no se vuelve a saber de el'
 
             ]
