@@ -63,7 +63,7 @@ randomQuote = (quotes) => {
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
-   //\\//\\//\\//\\    //\\//\\//\\//\\    INTELIGENCIA     DE     CHAPPIE    //\\//\\//\\//\\    //\\//\\//\\//\\  
+   //\\//\\//\\//\\    //\\//\\//\\//\\    INTELIGENCIA     DE     CHAPPIE    //\\//\\//\\//\\    //\\//\\//\\//\\
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
@@ -100,8 +100,8 @@ chappie.on("connected", function(address, port) {
 })
 
 // Rutina al leer un mensaje del chat
-chappie.on("chat", function(channel, user, message, self) {   
-    // Ignoramos mensajes duplicados 
+chappie.on("chat", function(channel, user, message, self) {
+    // Ignoramos mensajes duplicados
     if(last_msg != user['display-name'] + message) {
 
         // Comprobamos si es un comando
@@ -124,7 +124,7 @@ chappie.on("chat", function(channel, user, message, self) {
             } else if(commands[0] == "!luchar") {
                 luchar(user['display-name'])
             }
-    
+
             // Comprobamos si alguien ha saludado
         } else if(message.toLowerCase().includes('hola') || message.toLowerCase().includes('holi') || message.toLowerCase().includes('buenos dias') || message.toLowerCase().includes('buenas tardes')) {
             saludar(user['display-name'])
@@ -138,9 +138,9 @@ chappie.on("chat", function(channel, user, message, self) {
         // Actualizamos cual ha sido el ultimo mensaje y de quien
         last_msg = user['display-name'] + message
     }
-    
+
     /*
-   
+
     */
 })
 
@@ -189,7 +189,9 @@ saludar = (nombre) => {
             'Qué bueno verte por aquí, ' + nombre,
             'Hola ' + nombre,
             '¿Eres nuevo por aquí, ' + nombre + '? No me suenas Kappa',
-            '¡Hola ' + nombre + '! Mi vida era vací­a sin ti...'
+            '¡Hola ' + nombre + '! Mi vida era vací­a sin ti...',
+            'Estaba deseando que vinieras '  + nombre,
+            'Hola ' + nombre + '¿has traído comida?'
         ]
         chappie.say(owner, randomQuote(quotes))
     }
@@ -205,7 +207,7 @@ sillazo = (usuario, victima, isSub) => {
                 'tiene la silla, pero no sabe a quién lanzársela',
                 'está tan confuso que se hirió a sí mismo',
                 'está aprendiendo qué es una silla. Ten paciencia...'
-                
+
             ]
             chappie.action(owner, randomQuote(quotes))
         } else if (victima.toLowerCase() == chappie.getUsername().toLowerCase()) {
@@ -220,7 +222,16 @@ sillazo = (usuario, victima, isSub) => {
             state = "attack"
             texto = "¡Sillazo!"
             xDelay = 1
-            chappie.say(owner, usuario + " le ha dado un sillazo a " + victima)
+            var quotes = [
+                usuario + ' se dispone a darle un sillazo a ' + victima + ' pero se tropezó en el intento y se hizo daño a si mismo.',
+                usuario + ' está muy agresivo ultimamente con los sillazos, asique las autoridades lo llevan a un correccional',
+                usuario + ' coje la silla mas bonita que encuentra y la destroza encima de la cara de ' + victima ,
+                usuario + ' lanza una silla a ' + victima + ' pero al final ' + victima + ' consigue esquivar el sillazo y le da a ' + usuario + ' de su propia medicina ',
+                usuario + ' le da un sillazo a ' + victima + ' y le deja la cara tan fea que la sociedad ya no lo acepta',
+                usuario + ' en un intento de darle un sillazo a ' + victima + ' es capturado por un grupo de seguidores pro piña y no se vuelve a saber de el'
+
+            ]
+            chappie.say(owner, randomQuote(quotes))
         }
     } else {
         chappie.action(owner, " sólo da sillazos si se lo manda un sub")
@@ -280,7 +291,7 @@ combate = () => {
     var quotes = [
         'Encomendaros a la pizza que más ameis, porque esto no va a ser fácil',
         'Pedidle a Suraei que os bendiga y os acompañe en este duro evento',
-        'El lider actual no contenta a sus fieles y eso tiene que cambiar'
+        'La pizza suprema actual no contenta a sus fieles y eso tiene que cambiar'
     ]
     chappie.say(owner, randomQuote(quotes))
 
@@ -291,7 +302,7 @@ combate = () => {
 
     state = "attack"
     texto = "¡Combatiendo!"
-    xDelay = 10
+    xDelay = 15
     inCombat = true
     chappie.followersonly(owner, 0);
 }
@@ -325,7 +336,7 @@ finalizarCombate = () => {
     }
     inCombat = false
     chappie.followersonlyoff(owner)
-    window.setTimeout(combate, 60 * 1000 * 5)
+    window.setTimeout(combate, 60 * 1000 * 10)
 }
 
 lider = () => {
@@ -341,5 +352,5 @@ lider = () => {
     }
 }
 
-// Combates cada 5 minutos
-window.setTimeout(combate, 60 * 1000 * 5)
+// Combates cada 10 minutos
+window.setTimeout(combate, 60 * 1000 * 10)
