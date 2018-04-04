@@ -3,7 +3,7 @@ const msg = document.getElementById('msg')
 const pet = document.getElementById('pet')
 
 // Constantes de las configuraciones
-const owner = "suraei"
+const owner = "bakedpuma"
 const animal = "panda"
 const current_elo = 'Bronce III'
 const rango_lider = "Pizza Suprema"
@@ -123,6 +123,8 @@ chappie.on("chat", function(channel, user, message, self) {
                 lider()
             } else if(commands[0] == "!luchar") {
                 luchar(user['display-name'])
+            } else if(commands[0] == "!arrodillarse") {
+                arrodillarse(user['display-name'])
             }
 
             // Comprobamos si alguien ha saludado
@@ -138,10 +140,10 @@ chappie.on("chat", function(channel, user, message, self) {
         // Actualizamos cual ha sido el ultimo mensaje y de quien
         last_msg = user['display-name'] + message
     }
+})
 
-    /*
-
-    */
+chappie.on('hosted', function(channel, user, message, self) {
+    
 })
 
 // Conectamos el bot al canal si no está conectado ya
@@ -235,6 +237,32 @@ sillazo = (usuario, victima, isSub) => {
         }
     } else {
         chappie.action(owner, " sólo da sillazos si se lo manda un sub")
+    }
+}
+
+// -----------------------------------------------------------------------------------------------------------------
+
+arrodillarse = (usuario) => {
+    // Rutina para arrodillarse ante el lider
+    if(usuario == actual_lider) {
+        var quotes = [
+            'La ' + rango_lider + ' no se arrodilla ante nada ni nadie.'
+        ]
+        chappie.say(owner, randomQuote(quotes))
+    } else if(actual_lider == undefined || actual_lider == "") {
+        var quotes = [
+            usuario + ' se arrodilla, pero como no hay actual ' + rango_lider + ' se levanta rápidamente y disimula silbando',
+            usuario + ' intenta arrodillarse pero acaba atándose los cordones disimuladamente al ver que no hay actual ' + rango_lider
+        ]
+        chappie.say(owner, randomQuote(quotes))
+    } else {
+        var quotes = [
+            usuario + ' se arrodilla ante ' + actual_lider + ', actual ' + rango_lider,
+            usuario + ' le muestra todos sus repetos a ' + actual_lider + ', actual ' + rango_lider,
+            usuario + ' se convierte en un súbdito de ' + actual_lider + ', actual ' + rango_lider,
+            usuario + ' quiere que ' + actual_lider + ', actual ' + rango_lider + ', sepa que le es totalmente fiel'
+        ]
+        chappie.say(owner, randomQuote(quotes))
     }
 }
 
