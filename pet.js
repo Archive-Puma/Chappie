@@ -142,8 +142,8 @@ chappie.on("chat", function(channel, user, message, self) {
     }
 })
 
-chappie.on('hosted', function(channel, user, message, self) {
-    
+chappie.on('hosted', function(channel, username, viewers, autohost) {
+    chappie.say(owner, "Aquí está el canal de @" + username + " (https://twitch.tv/" + username.toLowerCase() + ") que nos está hosteando con " + viewers + " viewers. ¡Pasaros por su canal y dadle amor!")
 })
 
 // Conectamos el bot al canal si no está conectado ya
