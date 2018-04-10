@@ -3,7 +3,7 @@ const msg = document.getElementById('msg')
 const pet = document.getElementById('pet')
 
 // Constantes de las configuraciones
-const owner = "bakedpuma"
+const owner = "suraei"
 const animal = "panda"
 const current_elo = 'Bronce III'
 const rango_lider = "Pizza Suprema"
@@ -125,6 +125,8 @@ chappie.on("chat", function(channel, user, message, self) {
                 luchar(user['display-name'])
             } else if(commands[0] == "!arrodillarse") {
                 arrodillarse(user['display-name'])
+            } else if(commands[0] == "!abrazar") {
+                abrazar(user['display-name'], commands[1])
             }
 
             // Comprobamos si alguien ha saludado
@@ -140,10 +142,6 @@ chappie.on("chat", function(channel, user, message, self) {
         // Actualizamos cual ha sido el ultimo mensaje y de quien
         last_msg = user['display-name'] + message
     }
-})
-
-chappie.on('hosted', function(channel, user, message, self) {
-    
 })
 
 // Conectamos el bot al canal si no está conectado ya
@@ -193,7 +191,7 @@ saludar = (nombre) => {
             '¿Eres nuevo por aquí, ' + nombre + '? No me suenas Kappa',
             '¡Hola ' + nombre + '! Mi vida era vací­a sin ti...',
             'Estaba deseando que vinieras '  + nombre,
-            'Hola ' + nombre + '¿has traído comida?'
+            'Hola ' + nombre + ' ¿has traído comida?'
         ]
         chappie.say(owner, randomQuote(quotes))
     }
@@ -299,6 +297,31 @@ report = (usuario, victima) => {
 
 // ---------------------------------------------------------------------------------------
 
+abrazar = (usuario, victima) => {
+    if(victima == undefined) {
+      var quotes = [
+        usuario + ' no tiene muy claro a quien abrazar y decide darle su abrazo al objeto mas cercano',
+        usuario + ' necesita amor y pide un abrazo pero nadie se lo da',
+        usuario + ' pide un abrazo , pero no ducharse durante días pasa factura',
+        usuario + ' se abraza a sí mismo y la gente le mira raro',
+        usuario + ' se pone a llorar porque quiere un abrazo pero no hay nadie a su alrededor para ofrecérselo'
+      ]
+      chappie.say(owner, randomQuote(quotes))
+    } else {
+      var quotes = [
+        usuario + ' le da un abrazo tan fuerte a ' + victima + ' que hace saltar a ' + victima + ' por los aires.',
+        usuario + ' se acerca a ' + victima + ' para darle un gran abrazo pero ' + victima + ' no le presta atención porque está demasiado ocupado comiendo Pizza sin Piña',
+        usuario + ' se acerca sigilosamente por detrás de ' + victima + ' y al abrazarle le da tal susto que deja a ' + victima + ' inconsciente ',
+        usuario + ' le da un abrazo con tanto cariño a ' + victima + ' que todos pueden apreciar el gran amor que siente el uno por el otro ',
+        usuario + ' desea abrazar a ' + victima + ' pero ' + victima + ' se hace como que le llaman por teléfono para no tener que hacerlo.',
+        usuario + ' abraza a ' + victima + ' creándo entre ellos un vínculo irrompible de amor ',
+        usuario + ' quiere un abrazo de ' + victima + ', pero ' + victima + ' no tiene un día para dar abrazos, prefiere que le dejen un poco de espacio.'
+      ]
+      chappie.say(owner, randomQuote(quotes))
+    }
+}
+// ---------------------------------------------------------------------------------------
+
 combate = () => {
     var quotes = [
         'Cae la noche...',
@@ -380,5 +403,5 @@ lider = () => {
     }
 }
 
-// Combates cada 10 minutos
-window.setTimeout(combate, 60 * 1000 * 10)
+// Combates cada 20 minutos
+window.setTimeout(combate, 60 * 1000 * 20)
