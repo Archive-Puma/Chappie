@@ -8,6 +8,9 @@ const animal = "panda"
 const current_elo = 'Bronce III'
 const rango_lider = "Pizza Suprema"
 
+// Constantes de la base de datos
+const viewers_file = 'viewers.txt'
+
 // Funcion para hacer descansar a la mascota
 setIdle = () => {
     texto = " "
@@ -103,7 +106,10 @@ chappie.on("connected", function(address, port) {
 chappie.on("chat", function(channel, user, message, self) {
     // Ignoramos mensajes duplicados
     if(last_msg != user['display-name'] + message) {
-
+        // Lo añadimos a la lista de gente en el stream
+        if(user['display-name'].toLowerCase() != 'chappiethebot'){
+            addViewer(user['display-name'])
+        }
         // Comprobamos si es un comando
         if(message[0] === '!') {
             console.log("[*] Comando detectado: " + message)
@@ -128,10 +134,6 @@ chappie.on("chat", function(channel, user, message, self) {
             } else if(commands[0] == "!abrazar") {
                 abrazar(user['display-name'], commands[1])
             }
-
-            // Comprobamos si alguien ha saludado
-        } else if(message.toLowerCase().includes('hola') || message.toLowerCase().includes('holi') || message.toLowerCase().includes('buenos dias') || message.toLowerCase().includes('buenas tardes')) {
-            saludar(user['display-name'])
             // Comandos de mantenimiento
         } else if(message == "ping") {
             pong(user['display-name'])
@@ -148,7 +150,6 @@ chappie.on("chat", function(channel, user, message, self) {
 if(chappie.readyState() == "CLOSED") {
     chappie.connect()
 }
-
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
@@ -402,6 +403,30 @@ lider = () => {
         chappie.say(owner, randomQuote(quotes))
     }
 }
+
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+    //\\//\\//\\//\\    //\\//\\//\\//\\       BASE     DE      DATOS       //\\//\\//\\//\\    //\\//\\//\\//\\    
+
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+
+const file = require('fs');
+
+addViewer = (user) => {
+    var nuevo = true
+    file.readFileSync(viewers_file).toString().split('\n')
+        .forEach(function (line) {
+            if(nuevo && line.includes(user)) {
+                nuevo = false
+            }
+        })
+
+    if(nuevo) {
+        saludar(user)
+        file.appendFile(viewers_file, user + '\n')
+    }
+}
+
 
 // Combates cada 20 minutos
 window.setTimeout(combate, 60 * 1000 * 20)
