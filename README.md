@@ -19,7 +19,7 @@ cd Chappie
 
 Install all the npm modules:
 ```js
-npm install
+npm i
 ```
 
 :see_no_evil: Run the program!
