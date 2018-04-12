@@ -27,6 +27,7 @@
   "homepage": "https://github.com/cosasdepuma/chappie#readme",
   "dependencies": {
     "electron": "^1.8.4",
+    "npm": "^5.8.0",
     "tmi.js": "^1.2.1"
   },
   "devDependencies": {
