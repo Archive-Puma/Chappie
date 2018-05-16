@@ -5,7 +5,7 @@ const pet = document.getElementById('pet')
 // Constantes de las configuraciones
 const owner = "suraei"
 const animal = "panda"
-const current_elo = 'Bronce III'
+const current_elo = 'Bronce I'
 const rango_lider = "Pizza Suprema"
 
 // Funcion para hacer descansar a la mascota
@@ -117,6 +117,8 @@ chappie.on("chat", function(channel, user, message, self) {
                 author()
             }else if(commands[0] == "!sillazo") {
                 sillazo(user['display-name'], commands[1], user['subscriber'])
+            }else if(commands[0] == "!lanzarpizza") {
+                lanzarpizza(user['display-name'], commands[1], user['subscriber'])
             } else if(commands[0] == "!report") {
                 report(user['display-name'], commands[1])
             } else if(commands[0] == "!lider") {
@@ -157,7 +159,7 @@ if(chappie.readyState() == "CLOSED") {
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 
 author = () => {
-    chappie.say(owner, "Chappie was made by @BakedPuma")
+    chappie.say(owner, "Chappie was made by @BakedPuma and @Suraei")
 }
 
 ping = (usuario) => {
@@ -318,6 +320,45 @@ abrazar = (usuario, victima) => {
         usuario + ' quiere un abrazo de ' + victima + ', pero ' + victima + ' no tiene un día para dar abrazos, prefiere que le dejen un poco de espacio.'
       ]
       chappie.say(owner, randomQuote(quotes))
+    }
+}
+// ---------------------------------------------------------------------------------------
+
+lanzarpizza = (usuario, victima, isSub) => {
+    // Rutina para dar sillazos (sólo subs)
+    if(isSub) {
+        if(victima == undefined) {
+            var quotes = [
+                'necesita que eligas víctima para lanzarle la pizza',
+                'no sabe a quien lanzar la pizza y se la tira a ' + usuario
+
+            ]
+            chappie.action(owner, randomQuote(quotes))
+        } else if (victima.toLowerCase() == chappie.getUsername().toLowerCase()) {
+            var quotes = [
+                'no quiere larse pizza a la cara',
+                'está tan confuso que se hirió a si mismo',
+                'tiene la pizza, pero no sabe a quién lanzársela',
+                'no entiende por qué le mandas herirse, así que decide lanzarte la pizza'
+            ]
+            chappie.action(owner, randomQuote(quotes))
+        } else {
+            state = "attack"
+            texto = "¡Piiiiiizzza!"
+            xDelay = 1
+            var quotes = [
+                usuario + ' se dispone a lanzarle la pizza a ' + victima + ' pero se tropezó en el intento y se hizo daño a si mismo.',
+                usuario + ' le lanza la pizza a ' + victima + ' pero no tiene fuerza y no le llega a rozar',
+                usuario + ' cambia de opinion y en vez de lanzarle la pizza a ' + victima + ' se la come',
+                usuario + ' lanza una pizza en mal estado a ' + victima + ' pero al final ' + victima + ' consigue esquivala y acaba en la cara de ' + usuario ,
+                usuario + ' prepara una rica pizza y nada mas sacarla del horno la tira en la cara de ' + victima ,
+                usuario + ' está enfadado y le lanza una pizza con piña a ' + victima
+
+            ]
+            chappie.say(owner, randomQuote(quotes))
+        }
+    } else {
+        chappie.action(owner, " sólo tira pizza si se lo manda un sub")
     }
 }
 // ---------------------------------------------------------------------------------------
