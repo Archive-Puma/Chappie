@@ -1,12 +1,10 @@
 {
-  "name": "chappie",
-  "version": "0.1.1",
-  "description": "Suraei's Twitch Bot",
-  "main": "main.js",
+  "name": "chappiethebot",
+  "version": "1.0.0",
+  "description": "Twitch Bot and Awesome Pet",
+  "main": "src/main.js",
   "scripts": {
-    "start": "electron .",
-    "test": "electron . --disable-gpu --force-cpu-draw",
-    "build": "electron-packager ."
+    "test": "electromon src/main.js"
   },
   "repository": {
     "type": "git",
@@ -14,10 +12,10 @@
   },
   "keywords": [
     "chappie",
-    "bot",
     "twitch",
-    "irc",
-    "ia"
+    "suraei",
+    "stream",
+    "bot"
   ],
   "author": "CosasDePuma",
   "license": "MIT",
@@ -25,12 +23,12 @@
     "url": "https://github.com/cosasdepuma/chappie/issues"
   },
   "homepage": "https://github.com/cosasdepuma/chappie#readme",
-  "dependencies": {
-    "electron": "^1.8.4",
-    "npm": "^5.8.0",
-    "tmi.js": "^1.2.1"
-  },
   "devDependencies": {
-    "electron-packager": "^11.1.0"
+    "electromon": "^1.0.10",
+    "electron": "^2.0.2",
+    "electron-packager": "^12.1.0"
+  },
+  "dependencies": {
+    "tmi.js": "^1.2.1"
   }
 }
