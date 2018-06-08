@@ -8,6 +8,8 @@
 Clone or download the Github project:
 ```bash
 git clone https://github.com/cosasdepuma/chappie.git Chappie
+  or
+git clone https://gitlab.com/cosasdepuma/chappie.git Chappie
 ```
 
 :electric_plug: Dependencies
@@ -26,7 +28,7 @@ npm i
 ----
 Run the application through NodeJS:
 ```sh
-npm start
+npm test
 ```
 
 You can also install Electron globally on your computer through the command `npm install -g electron` and running the program with:
@@ -45,31 +47,46 @@ npm run-script build
 
 :hamster: Pets and more Pets!
 ----
-If you want to change the default pet, you should download three GIFs like this and rename it to **[animal]_[action].gif**
+If you want to change the default pet, you should download three GIFs like this and rename it to **[action].gif**
 
-| panda_idle.gif | panda_attack.gif | panda_greetings.gif |
+| panda/idle.gif | panda/attack.gif | panda/greetings.gif |
 |:--:|:--:|:--:|
 | ![Panda Idle](https://cdn.rawgit.com/CosasDePuma/Chappie/821bea83/public/gif/panda_idle.gif) | ![Panda Attack](https://cdn.rawgit.com/CosasDePuma/Chappie/821bea83/public/gif/panda_attack.gif) | ![Panda Greetings](https://cdn.rawgit.com/CosasDePuma/Chappie/821bea83/public/gif/panda_greetings.gif) |
 
-GIFs must be deposited in the `public/gif` folder.
+GIFs must be deposited in the `src/resources/pets/[animal]` folder.
 Current actions available are: **IDLE**, **ATTACK**, **GREETINGS**
 
-Finally, line `pet.js:7` must be changed with your animal name:
+Finally, line `src/index.js:1` must be changed with your animal name:
 ```js
-var animal = "animal_name"
+const PET = 'panda';
 ```
 
 :earth_africa: Scheme of contents
 ----
 ```js
 Chappie
-|_ public
-  |_ gif
-  |_ ttf
-|_ main.js
-|_ pet.js
-|_ pet.html
+ < Source >
+|_ src
+  |_ resources
+    |_ pets
+      |_ panda
+    |_ sounds
+  |_ main.js
+  |_ twitch.js
+  |_ quotes.js
+  |_ sounds.js
+  |_ index.js
+  |_ index.css
+  |_ index.html
+  |_ settings.json <- This file must be added manually 
+ < Dependencies >
 |_ package.json
+|_ package-lock.json
+ < Repository >
+|_ .gitignore
+|_ .gitlab-ci.yml
+|_ README.md
+|_ LICENSE
 ```
 
 Please contact with [Kike Puma](https://linkedin.com/in/kikepuma) if you need more information.
