@@ -48,6 +48,7 @@ npm run-script build
 :hamster: Pets and more Pets!
 ----
 If you want to change the default pet, you should download three GIFs like this and rename it to **[action].gif**
+
 | IDLE | ATTACK | GREETINGS | EAT | DANCE |
 |:--:|:--:|:--:|:--:|:--:|
 | panda/idle.gif | panda/attack.gif | panda/greetings.gif | panda/eat.gif | panda/dance.gif |
