@@ -49,9 +49,9 @@ npm run-script build
 ----
 If you want to change the default pet, you should download three GIFs like this and rename it to **[action].gif**
 
-| panda/idle.gif | panda/attack.gif | panda/greetings.gif |
-|:--:|:--:|:--:|
-| ![Panda Idle](https://cdn.rawgit.com/CosasDePuma/Chappie/821bea83/public/gif/panda_idle.gif) | ![Panda Attack](https://cdn.rawgit.com/CosasDePuma/Chappie/821bea83/public/gif/panda_attack.gif) | ![Panda Greetings](https://cdn.rawgit.com/CosasDePuma/Chappie/821bea83/public/gif/panda_greetings.gif) |
+| panda/idle.gif | panda/attack.gif | panda/greetings.gif | panda/eat.gif | panda/dance.gif |
+|:--:|:--:|:--:|:--:|:--:|
+| ![Panda Idle](https://cdn.rawgit.com/CosasDePuma/Chappie/e3f3f85c/src/resources/pets/panda/idle.gif) | ![Panda Attack](https://cdn.rawgit.com/CosasDePuma/Chappie/e3f3f85c/src/resources/pets/panda/attack.gif) | ![Panda Greetings](https://cdn.rawgit.com/CosasDePuma/Chappie/e3f3f85c/src/resources/pets/panda/greetings.gif) | ![Panda Eat](https://cdn.rawgit.com/CosasDePuma/Chappie/e3f3f85c/src/resources/pets/panda/eat.gif) | ![Panda Dance](https://cdn.rawgit.com/CosasDePuma/Chappie/e3f3f85c/src/resources/pets/panda/dance.gif) |
 
 GIFs must be deposited in the `src/resources/pets/[animal]` folder.
 Current actions available are: **IDLE**, **ATTACK**, **GREETINGS**
