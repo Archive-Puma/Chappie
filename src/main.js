@@ -12,7 +12,7 @@ function createWindow() {
     frame: false, resizable: false
   })
 
-  mainWindow.loadURL(`file://${__dirname}/index.html`)
+  mainWindow.loadURL(`file://${__dirname}/views/index.html`)
 
   mainWindow.webContents.openDevTools()
 

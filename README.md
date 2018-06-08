@@ -72,21 +72,23 @@ Chappie
   |_ resources
     |_ pets
       |_ panda
+      |_ rabbit
     |_ sounds
+  |_ components
+    |_ quotes.js
+    |_ sounds.js
+    |_ twitch.js
+  |_ views
+    |_ index.html
+    |_ index.js
+    |_ index.css
   |_ main.js
-  |_ twitch.js
-  |_ quotes.js
-  |_ sounds.js
-  |_ index.js
-  |_ index.css
-  |_ index.html
   |_ settings.json <- This file must be added manually 
  < Dependencies >
 |_ package.json
 |_ package-lock.json
  < Repository >
 |_ .gitignore
-|_ .gitlab-ci.yml
 |_ README.md
 |_ LICENSE
 ```
