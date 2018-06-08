@@ -51,7 +51,8 @@ If you want to change the default pet, you should download three GIFs like this 
 
 | panda/idle.gif | panda/attack.gif | panda/greetings.gif | panda/eat.gif | panda/dance.gif |
 |:--:|:--:|:--:|:--:|:--:|
-| ![Panda Idle](https://cdn.rawgit.com/CosasDePuma/Chappie/e3f3f85c/src/resources/pets/panda/idle.gif) | ![Panda Attack](https://cdn.rawgit.com/CosasDePuma/Chappie/e3f3f85c/src/resources/pets/panda/attack.gif) | ![Panda Greetings](https://cdn.rawgit.com/CosasDePuma/Chappie/e3f3f85c/src/resources/pets/panda/greetings.gif) | ![Panda Eat](https://cdn.rawgit.com/CosasDePuma/Chappie/e3f3f85c/src/resources/pets/panda/eat.gif) | ![Panda Dance](https://cdn.rawgit.com/CosasDePuma/Chappie/e3f3f85c/src/resources/pets/panda/dance.gif) |
+| ![Panda Idle](https://cdn.rawgit.com/CosasDePuma/Chappie/b7e8ac60/src/resources/pets/panda/idle.gif) | ![Panda Attack](https://cdn.rawgit.com/CosasDePuma/Chappie/b7e8ac60/src/resources/pets/panda/attack.gif) | ![Panda Greetings](https://cdn.rawgit.com/CosasDePuma/Chappie/b7e8ac60/src/resources/pets/panda/greetings.gif) | ![Panda Eat](https://cdn.rawgit.com/CosasDePuma/Chappie/b7e8ac60/src/resources/pets/panda/eat.gif) | ![Panda Dance](https://cdn.rawgit.com/CosasDePuma/Chappie/b7e8ac60/src/resources/pets/panda/dance.gif) |
+| ![Rabbit Idle](https://cdn.rawgit.com/CosasDePuma/Chappie/b7e8ac60/src/resources/pets/rabbit/idle.gif) | ![Rabbit Attack](https://cdn.rawgit.com/CosasDePuma/Chappie/b7e8ac60/src/resources/pets/rabbit/attack.gif) | ![Rabbit Greetings](https://cdn.rawgit.com/CosasDePuma/Chappie/b7e8ac60/src/resources/pets/rabbit/greetings.gif) | ![Rabbit Eat](https://cdn.rawgit.com/CosasDePuma/Chappie/b7e8ac60/src/resources/pets/rabbit/eat.gif) | ![Rabbit Dance](https://cdn.rawgit.com/CosasDePuma/Chappie/b7e8ac60/src/resources/pets/rabbit/dance.gif) |
 
 GIFs must be deposited in the `src/resources/pets/[animal]` folder.
 Current actions available are: **IDLE**, **ATTACK**, **GREETINGS**
