@@ -55,7 +55,7 @@ If you want to change the default pet, you should download three GIFs like this 
 | ![Rabbit Idle](https://cdn.rawgit.com/CosasDePuma/Chappie/b7e8ac60/src/resources/pets/rabbit/idle.gif) | ![Rabbit Attack](https://cdn.rawgit.com/CosasDePuma/Chappie/b7e8ac60/src/resources/pets/rabbit/attack.gif) | ![Rabbit Greetings](https://cdn.rawgit.com/CosasDePuma/Chappie/b7e8ac60/src/resources/pets/rabbit/greetings.gif) | ![Rabbit Eat](https://cdn.rawgit.com/CosasDePuma/Chappie/b7e8ac60/src/resources/pets/rabbit/eat.gif) | ![Rabbit Dance](https://cdn.rawgit.com/CosasDePuma/Chappie/b7e8ac60/src/resources/pets/rabbit/dance.gif) |
 
 GIFs must be deposited in the `src/resources/pets/[animal]` folder.
-Current actions available are: **IDLE**, **ATTACK**, **GREETINGS**
+Current actions available are: **IDLE**, **ATTACK**, **GREETINGS**, **EAT**, **DANCE**
 
 Finally, line `src/index.js:1` must be changed with your animal name:
 ```js
