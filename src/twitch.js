@@ -2,14 +2,16 @@
 |               LIBRERÍAS              |
 \* ================================= */
 const TMI = require('tmi.js');
+const SOUND = require('./sounds');
+const QUOTES = require('./quotes');
 
  /* ==================================*\
 |             CONFIGURACIÓN            |
 \* ================================= */
-var owner = '0nlyBree';
+var owner = 'alexelcapo';
 
-var viewers = [];
-var viewers_greetings = [];
+var viewers = []; // Array con los viewers actuales
+var viewers_greetings = []; // Array con los viewers ya saludados
 var viewers_ignore = [
     owner,
     "ChappieTheBot",
@@ -46,7 +48,7 @@ var points_blacklist = [
 \* ================================= */
 var options = {
     options: {
-        debug: false
+        debug: true
     },
     connection: {
         cluster: "aws",
@@ -54,7 +56,7 @@ var options = {
     },
     identity: {
         username: "ChappieTheBot",
-        password: 0 // FIXME: Twitch Oauth
+        password: "oauth:epjk8hx1qtk262s8kmhmagqujo61i2" // FIXME: Twitch Oauth
     },
     channels: [ owner ]
 };
@@ -119,6 +121,12 @@ function updateViewers() {
     }).catch();
 }
 
+function randomQuote(category, argv) {
+    let quote = QUOTES[category][Math.floor(Math.random() * (QUOTES[category].length))];
+    if(argv) quote = quote.replace('\$user', argv);
+    return quote;
+}
+
  /* ==================================*\
 |            EVENTOS DEL CHAT          |
 \* ================================= */
@@ -127,9 +135,16 @@ CLIENT.on('chat', function (canal, usuario, msg, self) {
     // Evita leer sus propios mensajes
     if (self) return;
     else {
-        greetings(usuario['display-name'])
+        greetings(usuario['display-name']);
     }
 });
+
+CLIENT.on("cheer", function (canal, usuario, message) {
+    // Do your stuff.
+    console.log(usuario, "ha donado", message);
+});
+
+
 
  /* ==================================*\
 |            FUNCIONALIDADES           |
@@ -138,7 +153,7 @@ function greetings(username) {
     username = username.toLowerCase();
     // Si el viewer no ha sido saludado y no está en la lista negra
     if(viewers_ignore.indexOf(username) === -1 && viewers_greetings.indexOf(username) === -1) {
-        console.log(username); // TODO: Implementar saludo
+        console.log(randomQuote('greetings', '@' + username)); // FIXME: Implementar saludo
         viewers_greetings.push(username);
     }
 }
