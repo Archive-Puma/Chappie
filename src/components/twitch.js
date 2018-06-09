@@ -28,7 +28,7 @@ fetch('../settings.json').then(function (res) {
 \* ================================= */
 var options = {
     options: {
-        debug: true
+        debug: CONFIG.DEBUG
     },
     connection: {
         cluster: "aws",
@@ -38,7 +38,7 @@ var options = {
         username: CONFIG.BOT_NAME,
         password: "oauth:epjk8hx1qtk262s8kmhmagqujo61i2" // FIXME: Twitch Oauth
     },
-    channels: [ CONFIG.OWNER ]
+    channels: [ CONFIG.OWNER, 'dualgg', 'wyld', 'pepiinero', 'hykiri', 'p0pitin', 'adrelina', 'ninja' ]
 };
 
 const CLIENT = new tmi.client(options);
