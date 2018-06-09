@@ -31,6 +31,7 @@ The `settings.json` file must be created in the `src` folder according to the fo
 {
     "MLAB_DOCUMENT": "aaaabbbbccccddddeeeeffff",
     "MLAB_APIKEY": "0000AAAA0000AAAA0000AAAA0000AAAA",
+    "TWITCH_CLIENT_ID": "0000xxxx0000AAAA0000xxxx000AAA",
     "TWITCH_OAUTH": "oauth:xxxxxxxxxxxxxxxxx0000000000000"
 }
 ```

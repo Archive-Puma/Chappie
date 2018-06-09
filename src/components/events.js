@@ -22,7 +22,7 @@ CLIENT.on('chat', function (canal, usuario, msg, self) {
 // Evento: Donación de cheers
 CLIENT.on("cheer", function (canal, usuario, message) {
     // TODO: Cheer Event
-    console.log(canal, usuario['display-name'] + " ha donado " + usuario['bits'] + ' con el mensaje: ' + message);
+    console.log(canal, usuario['display-name'] + " ha donado " + usuario['bits'] + ' bits con el mensaje: ' + message);
 });
 
 // Evento: Host
@@ -33,12 +33,12 @@ CLIENT.on("hosted", function (canal, usuario, viewers, autohost) {
 
 // Evento: Subscripción
 CLIENT.on("subscription", function (canal, usuario, metodo, message, userstate) {
-    console.log(canal, usuario + ' se ha suscrito usando ' + metodo.plan);
+    console.log(canal, usuario + ' se ha suscrito usando ' + metodo.plan, metodo);
 });
 
 // Evento: Re-Subscripción
 CLIENT.on("resub", function (canal, usuario, meses, message, userstate, metodo) {
-    console.log(canal, usuario + ' se ha suscrito por ' + meses + ' mes consecutivo usando ' + metodo.plan);
+    console.log(canal, usuario + ' se ha suscrito por ' + meses + ' mes consecutivo usando ' + metodo.plan, metodo);
 });
 
 CLIENT.on("join", function (channel, usuario, self) {

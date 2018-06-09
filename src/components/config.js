@@ -1,7 +1,7 @@
 class Config {
     constructor() {
         // Nombre del streamer
-        this.OWNER = "suraei";
+        this.OWNER = "adrelina";
         // Nombre de la cuenta del bot
         this.BOT_NAME = "ChappieTheBot";
         // Nombre de la moneda
@@ -25,6 +25,7 @@ class Config {
             "StreamElements"
         ];
 
+        // Development options
         this.DEBUG = false;
 
         // Formateamos todo a minúsculas

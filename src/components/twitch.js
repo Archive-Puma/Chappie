@@ -5,9 +5,10 @@ const TMI = require('tmi.js');
 const CONFIG = require('../components/config');
 
  /* ==================================*\
-|               DATABASES              |
+|             CONFIGURACIÓN            |
 \* ================================= */
 var database = String();
+var clientID = String();
 fetch('../settings.json').then(function (res) {
     res.json().then(function (settings) {
         // Conseguir la URL de la base de datos
@@ -17,6 +18,8 @@ fetch('../settings.json').then(function (res) {
             .concat(CONFIG.OWNER).concat('/').concat(MLAB_DOCUMENT).concat('?apiKey=').concat(MLAB_APIKEY);
         // Conseguir el OAUTH de Twitch
         // this.TWITCH_OAUTH = settings.TWITCH_OAUTH
+        // Conseguir el Client ID de Twitch
+        clientID = settings.TWITCH_CLIENT_ID;
     });
 }).catch(function () {
     // TODO: Implementar alerta por ausencia del archivo src/settings.json
@@ -38,10 +41,26 @@ var options = {
         username: CONFIG.BOT_NAME,
         password: "oauth:epjk8hx1qtk262s8kmhmagqujo61i2" // FIXME: Twitch Oauth
     },
-    channels: [ CONFIG.OWNER, 'dualgg', 'wyld', 'pepiinero', 'hykiri', 'p0pitin', 'adrelina', 'ninja' ]
+    channels: [ CONFIG.OWNER ]
 };
 
 const CLIENT = new tmi.client(options);
+
+
+// TODO: FOLLOWERS TEST
+var number_followers = undefined;
+function followers() {
+    fetch('https://api.twitch.tv/kraken/channels/'.concat(CONFIG.OWNER).concat('/follows?limit=5&client_id=').concat(clientID))
+        .then(function(res) {
+            res.json().then(function(data) {
+                if(!number_followers) number_followers = data._total;
+                console.log(number_followers);
+            });
+        });
+}
+
+setInterval(followers,2000);
+// ___________________________________________ 
 
  /* ==================================*\
 |               FUNCIONES              |
