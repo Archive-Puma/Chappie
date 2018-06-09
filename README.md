@@ -81,6 +81,7 @@ const PET = 'panda';
 ```js
 Chappie
  < Repository >
+|_ .img
 |_ .gitignore
 |_ README.md
 |_ LICENSE
@@ -95,6 +96,9 @@ Chappie
       |_ rabbit
     |_ sounds
   |_ components
+    |_ commands.js
+    |_ config.js
+    |_ events.js
     |_ quotes.js
     |_ sounds.js
     |_ twitch.js
