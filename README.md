@@ -71,7 +71,7 @@ GIFs must be deposited in the `src/resources/pets/[animal]` folder.
 
 Current actions available are: **IDLE**, **ATTACK**, **GREETINGS**, **EAT**, **DANCE**
 
-Finally, line `src/index.js:1` must be changed with your animal name:
+Finally, line `src/views/index.js:1` must be changed with your animal name:
 ```js
 const PET = 'panda';
 ```
@@ -99,12 +99,12 @@ Chappie
     |_ commands.js
     |_ config.js
     |_ events.js
+    |_ pet.js
     |_ quotes.js
     |_ sounds.js
     |_ twitch.js
   |_ views
     |_ index.html
-    |_ index.js
     |_ index.css
   |_ main.js
   |_ settings.json <- This file must be added manually 

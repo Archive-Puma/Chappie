@@ -1,6 +1,7 @@
  /* ==================================*\
 |               LIBRERÍAS              |
 \* ================================= */
+const PET = require('../components/pet');
 const CMD = require('../components/commands');
 const {CLIENT} = require('../components/twitch');
 
