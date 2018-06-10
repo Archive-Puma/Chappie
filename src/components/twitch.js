@@ -1,10 +1,10 @@
- /* ==================================*\
+/* ==================================*\
 |               LIBRERÍAS              |
 \* ================================= */
 const TMI = require('tmi.js');
 const CONFIG = require('../components/config');
 
- /* ==================================*\
+/* ==================================*\
 |             CONFIGURACIÓN            |
 \* ================================= */
 var database = String();
@@ -26,7 +26,7 @@ fetch('../settings.json').then(function (res) {
     // alert("ES NECESARIO TENER UN ARCHIVO LLAMADO SETTINGS.JSON EN LA CARPETA SRC");
 });
 
- /* ==================================*\
+/* ==================================*\
 |               CONEXIÓN               |
 \* ================================= */
 var options = {
@@ -41,28 +41,60 @@ var options = {
         username: CONFIG.BOT_NAME,
         password: "oauth:epjk8hx1qtk262s8kmhmagqujo61i2" // FIXME: Twitch Oauth
     },
-    channels: [ CONFIG.OWNER ]
+    // FIXME: CONFIG.OWNER debe manejar varios canales, no sólo uno
+    channels: [CONFIG.OWNER, 'hekady', 'mery_soldier']
 };
+
+tmi.client.prototype.followHandler = function(self) {
+    // Iniciamos un contador de viewers si no lo tiene
+    if(!self._followers) self._followers = {};
+    // Ejecutamos la rutina para cada canal en el que esté el cliente
+    for (let channel of this.opts.channels) {
+        let limit = 1;
+        // Si no existe la key con el nombre del canal, lo creamos
+        if(!self._followers[channel]) self._followers[channel] = -1;
+        // Montamos la URL de la API de Twitch
+        let kraken = `https://api.twitch.tv/kraken/channels/${channel.substring(1)}/follows?client_id=${clientID}&limit=${limit}`;
+        // Realizamos una petición para ver el número de followers
+        fetch(kraken).then(res => res.json().then(function(info) {
+            // Si sabemos cuantos seguidores tenía antes el canal ...
+            if(self._followers[channel] !== -1) {
+                // Guardamos el último follower para evitar saltarnos alguno
+                let last_follower = info.follows[0].user.display_name; 
+                // ... comprobamos si hay nuevos followers
+                limit = info._total - self._followers[channel];
+                if(limit > 0) {
+                    // Creamos un límite seguro para evitar errores
+                    let safe_limit = 10;
+                    // Reescribimos la URL
+                    // FIXME: Tiene que haber formas más optimizadas de hacer esto
+                    kraken = `https://api.twitch.tv/kraken/channels/${channel.substring(1)}/follows?client_id=${clientID}&limit=${limit + safe_limit}`
+                    // Preguntamos de nuevo por los nuevos followers
+                    fetch(kraken).then(_res => _res.json().then(function(data) {
+                        let i = 0;
+                        // Mostramos los nuevos followers...
+                        while(i < limit + safe_limit && data.follows[i].user.display_name !== last_follower) {
+                            // ... enviando un evento en el cliente
+                            self.emit('follow', channel, data.follows[i].user.display_name);
+                            i++;
+                        }
+                    }));
+                }
+            }
+            // Actualizamos el número de followers del canal
+            self._followers[channel] = info._total;
+        })).catch();
+    }
+}
 
 const CLIENT = new tmi.client(options);
 
+// Creamos un intervalo de repetición para la función de los followers
+setInterval(() => CLIENT.followHandler(CLIENT), CONFIG.FOLLOW_INTERVAL * 1000);
 
-// TODO: FOLLOWERS TEST
-var number_followers = undefined;
-function followers() {
-    fetch('https://api.twitch.tv/kraken/channels/'.concat(CONFIG.OWNER).concat('/follows?limit=5&client_id=').concat(clientID))
-        .then(function(res) {
-            res.json().then(function(data) {
-                if(!number_followers) number_followers = data._total;
-                console.log(number_followers);
-            });
-        });
-}
-
-setInterval(followers,2000);
 // ___________________________________________ 
 
- /* ==================================*\
+/* ==================================*\
 |               FUNCIONES              |
 \* ================================= */
 /*
@@ -131,7 +163,7 @@ function givePointsToAll() {
     }).catch(function(error) {});
 }
 */
- /* ==================================*\
+/* ==================================*\
 |            EVENTOS DEL BOT           |
 \* ================================= */
 /*

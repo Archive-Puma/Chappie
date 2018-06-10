@@ -1,20 +1,23 @@
 class Config {
     constructor() {
         // Nombre del streamer
-        this.OWNER = "adrelina";
+        this.OWNER = "suraei";
         // Nombre de la cuenta del bot
         this.BOT_NAME = "ChappieTheBot";
+        // Intervalo de comprobación de nuevos followers (en segundos)
+        this.FOLLOW_INTERVAL = 5;
         // Nombre de la moneda
         this.POINTS_NAME = "trozos de bambú";
         // Puntos dados en cada ronda a los que estén viendo el stream
         this.POINTS_VIEW = 5;
-        // Tiempo entre cada ronda de reparto de puntos (en segundos)
+        // Intervalo de reparto de puntos (en segundos)
         this.POINTS_VIEW_INTERVAL = 5;
         // Lista negra: Cuentas que no recibirán puntos por view
         this.POINTS_VIEW_BLACKLIST = [
             this.OWNER,
             this.BOT_NAME,
             "Moobot",
+            "Nightbot",
             "StreamElements"
         ];
         // Lista negra: Cuentas que el bot ignorará
@@ -22,6 +25,7 @@ class Config {
             this.OWNER,
             this.BOT_NAME,
             "Moobot",
+            "Nightbot",
             "StreamElements"
         ];
 

@@ -11,12 +11,17 @@ CLIENT.connect();
 |            EVENTOS DEL CHAT          |
 \* ================================= */
 // Evento: Nuevo mensaje (chat)
-CLIENT.on('chat', function (canal, usuario, msg, self) {
+CLIENT.on("chat", function (canal, usuario, msg, self) {
     // Evita leer sus propios mensajes
     if (self) return;
     else {
         // CMD.greet(usuario['display-name']);
     }
+});
+
+// Evento: Follow (Custom)
+CLIENT.on("follow", function(canal, usuario) {
+    console.log(usuario + ' ha empezado a seguir a ' + canal);
 });
 
 // Evento: Donación de cheers
