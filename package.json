@@ -4,7 +4,8 @@
   "description": "Twitch Bot and Awesome Pet",
   "main": "src/main.js",
   "scripts": {
-    "test": "electromon src/main.js"
+    "test": "electromon src/main.js",
+    "push": "git push github master && git push gitlab master"
   },
   "repository": {
     "type": "git",
