@@ -72,7 +72,7 @@ You can customize the bot to fit your Twitch channel by modifying the `config.js
 | **follow_check_interval** | Interval in which it will be checked if there has been a new follow (in seconds) | :heavy_multiplication_x: |
 | **points. name** | Channel currency name | :heavy_multiplication_x: |
 | **points. per_view** | Number of points given to each viewer | :heavy_multiplication_x: |
-| **points. reward_interval** | Reward interval to each viewer for watching the channel | :heavy_multiplication_x: |
+| **points. reward_interval** | Reward interval to each viewer for watching the channel (in seconds) | :heavy_multiplication_x: |
 | **blacklist** | Users that the bot will ignore (will not give them points either) | :heavy_multiplication_x: |
 | **debug** | Enable debug console logs (dev only) | :heavy_check_mark: |
 | **credentials_path** | Path of the `credentials.json` file | :heavy_multiplication_x: |
