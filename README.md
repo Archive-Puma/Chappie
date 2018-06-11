@@ -1,7 +1,7 @@
 <img src="https://cdn.rawgit.com/CosasDePuma/Chappie/563772d7/.img/icon.png" align="right" width="300">
 
 # Chappie
-[![NodeJS Version](https://img.shields.io/badge/nodejs-8.9.4-yellowgreen.svg?style=flat)](https://nodejs.org/es/download/package-manager/) [![Electron](https://img.shields.io/badge/electron-1.8.4-7991de.svg?style=flat)](https://electronjs.org/) [![TMI.js](https://img.shields.io/badge/tmi.js-1.2.1-7454af.svg?style=flat)](https://electronjs.org/) [![License](https://img.shields.io/github/license/CosasDePuma/Peral.svg)](https://github.com/CosasDePuma/Peral/blob/master/LICENSE)
+[![NodeJS Version](https://img.shields.io/badge/nodejs-8.9.4-yellowgreen.svg?style=flat)](https://nodejs.org/es/download/package-manager/) [![Electron](https://img.shields.io/badge/electron-1.8.4-7991de.svg?style=flat)](https://electronjs.org/) [![TMI.js](https://img.shields.io/badge/tmi.js-1.2.1-7454af.svg?style=flat)](https://electronjs.org/) [![License](https://img.shields.io/github/license/CosasDePuma/Peral.svg)](https://github.com/CosasDePuma/Peral/blob/master/LICENSE) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FCosasDePuma%2FChappie.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FCosasDePuma%2FChappie?ref=badge_shield)
 
 :vhs: Clone me!
 ----
@@ -74,7 +74,7 @@ You can customize the bot to fit your Twitch channel by modifying the `config.js
 | **points. per_view** | Number of points given to each viewer | :heavy_multiplication_x: |
 | **points. reward_interval** | Reward interval to each viewer for watching the channel | :heavy_multiplication_x: |
 | **blacklist** | Users that the bot will ignore (will not give them points either) | :heavy_multiplication_x: |
-| **debug** | Enable debug console logs (dev only) | :heavy_check_mark |
+| **debug** | Enable debug console logs (dev only) | :heavy_check_mark: |
 | **credentials_path** | Path of the `credentials.json` file | :heavy_multiplication_x: |
 
 
