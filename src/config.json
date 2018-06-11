@@ -1,0 +1,20 @@
+{
+  "owner": "Suraei",
+  "bot_name": "ChappieTheBot",
+  "pet": "panda",
+  "follow_check_interval": 5,
+  "points": {
+    "name": "trozos de bambú",
+    "per_view": 5,
+    "reward_interval": 5
+  },
+  "blacklist": [
+      "Suraei",
+      "ChappieTheBot",
+      "Moobot",
+      "Nigthbot",
+      "StreamElements"
+  ],
+  "debug": true,
+  "credentials_path": "src/credentials.json"
+}
