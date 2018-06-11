@@ -26,7 +26,8 @@ npm i
 
 :page_facing_up: Configuration
 ----
-The `settings.json` file must be created in the `src` folder according to the following format:
+The `credentials.json` file must be created in the `src` folder according to the following format:
+
 ```json
 {
     "MLAB_DOCUMENT": "aaaabbbbccccddddeeeeffff",
@@ -35,6 +36,47 @@ The `settings.json` file must be created in the `src` folder according to the fo
     "TWITCH_OAUTH": "oauth:xxxxxxxxxxxxxxxxx0000000000000"
 }
 ```
+
+You can customize the bot to fit your Twitch channel by modifying the `config.json` file in the `src` folder.
+
+```json
+{
+  "owner": "YOUR_CHANNEL_NAME",
+  "bot_name": "ChappieTheBot",
+  "pet": "panda",
+  "follow_check_interval": 5,
+  "points": {
+    "name": "My Awesome Coin",
+    "per_view": 5,
+    "reward_interval": 5
+  },
+  "blacklist": [
+      "YOUR_CHANNEL_NAME",
+      "ChappieTheBot",
+      "Moobot",
+      "Nigthbot",
+      "StreamElements"
+  ],
+  "debug": false,
+  "credentials_path": "src/credentials.json"
+}
+```
+
+### Description of the fields in the config.json file
+
+| Key | Value | Optional? |
+|:--:|:--:|:--:|
+| **owner** | Owner of the channel where the bot will be | :heavy_multiplication_x: |
+| **bot_name** | Name of the Twitch account that will be used by the bot | :heavy_multiplication_x: |
+| **pet** | Name of the folder that contains the GIFs within the path `resources/pets` | :heavy_multiplication_x: |
+| **follow_check_interval** | Interval in which it will be checked if there has been a new follow (in seconds) | :heavy_multiplication_x: |
+| **points. name** | Channel currency name | :heavy_multiplication_x: |
+| **points. per_view** | Number of points given to each viewer | :heavy_multiplication_x: |
+| **points. reward_interval** | Reward interval to each viewer for watching the channel | :heavy_multiplication_x: |
+| **blacklist** | Users that the bot will ignore (will not give them points either) | :heavy_multiplication_x: |
+| **debug** | Enable debug console logs (dev only) | :heavy_check_mark |
+| **credentials_path** | Path of the `credentials.json` file | :heavy_multiplication_x: |
+
 
 :see_no_evil: Run the program!
 ----
@@ -72,43 +114,39 @@ GIFs must be deposited in the `src/resources/pets/[animal]` folder.
 
 Current actions available are: **IDLE**, **ATTACK**, **GREETINGS**, **EAT**, **DANCE**
 
-Finally, line `src/components/pet.js:6` must be changed with your animal name:
-```js
-const PET = 'panda';
-```
-
 :earth_africa: Scheme of contents
 ----
 ```js
 Chappie
  < Repository >
-|_ .img
-|_ .gitignore
-|_ README.md
-|_ LICENSE
+|__ .img
+|__ .gitignore
+|__ LICENSE
+|__ README.md
 < Dependencies >
-|_ package.json
-|_ package-lock.json
+|__ package.json
+|__ package-lock.json
  < Source >
-|_ src
-  |_ resources
-    |_ pets
-      |_ panda
-      |_ rabbit
-    |_ sounds
-  |_ components
-    |_ commands.js
-    |_ config.js
-    |_ events.js
-    |_ pet.js
-    |_ quotes.js
-    |_ sounds.js
-    |_ twitch.js
-  |_ views
-    |_ index.html
-    |_ index.css
-  |_ main.js
-  |_ settings.json <- This file must be added manually 
+|__ src
+  |__ resources
+    |__ pets
+      |__ panda
+      |__ rabbit
+    |__ sounds
+  |__ components
+    |__ commands.js
+    |__ config.js
+    |__ events.js
+    |__ pet.js
+    |__ quotes.js
+    |__ sounds.js
+    |__ twitch.js
+  |__ views
+    |__ index.html
+    |__ index.css
+  |__ main.js
+  |__ config.json
+  |__ credentials.json <- This file must be added manually 
 ```
 
 Please contact with [Kike Puma](https://linkedin.com/in/kikepuma) if you need more information.

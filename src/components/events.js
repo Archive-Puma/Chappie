@@ -1,7 +1,7 @@
 /* ==================================*\
                 LIBRERÍAS
 \* ================================= */
-// const PET = require('../components/pet')
+const PET = require('../components/pet') // eslint-disable-line no-unused-vars
 // const CMD = require('../components/commands')
 const {CLIENT} = require('../components/twitch')
 
@@ -25,7 +25,6 @@ CLIENT.on('follow', function (canal, usuario) {
 
 // Evento: Donación de cheers
 CLIENT.on('cheer', function (canal, usuario, message) {
-  // TODO: Cheer Event
   console.log(canal, usuario['display-name'] + ' ha donado ' + usuario['bits'] + ' bits con el mensaje: ' + message)
 })
 

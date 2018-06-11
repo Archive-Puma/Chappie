@@ -11,14 +11,14 @@ class CMD {
 function randomQuote (category, argv) {
   let quote = QUOTES[category][Math.floor(Math.random() * (QUOTES[category].length))]
   if (argv) quote = quote.replace('$user', argv)
-  quote = quote.replace('$owner', CONFIG.OWNER)
+  quote = quote.replace('$owner', CONFIG.owner)
   return quote
 }
 
 CMD.prototype.greet = function (nombre) {
   let usuario = nombre.toLowerCase()
   // Si el viewer no ha sido saludado y no está en la lista negra ...
-  if (CONFIG.VIEWERS_BLACKLIST.indexOf(usuario) === -1 && this.GREETED_VIEWERS.indexOf(usuario) === -1) {
+  if (CONFIG.blacklist.indexOf(usuario) === -1 && this.GREETED_VIEWERS.indexOf(usuario) === -1) {
     // ... lo saludamos
     console.log(randomQuote('greetings', '@' + nombre)) // FIXME: Implementar saludo
     this.GREETED_VIEWERS.push(usuario)

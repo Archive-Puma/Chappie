@@ -3,7 +3,7 @@ class Pet {
     /* Mascotas disponibles: */
     //  - panda
     //  - rabbit
-    this.PET = 'panda'
+    this.PET = require('../components/config').pet
     this.PET_ELEMENT = document.getElementById('pet')
     this.PET_SRC = '../resources/pets/'.concat(this.PET).concat('/')
 

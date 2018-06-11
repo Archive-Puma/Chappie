@@ -9,42 +9,26 @@ const CONFIG = require('../components/config')
 /* ==================================*\
               CONFIGURACIÓN
 \* ================================= */
-// var database = String()
-var clientID = String()
-fetch('../settings.json').then(function (res) {
-  res.json().then(function (settings) {
-    // Conseguir la URL de la base de datos
-    // const MLAB_APIKEY = settings.MLAB_APIKEY
-    // const MLAB_DOCUMENT = settings.MLAB_DOCUMENT
-    // database = 'https://api.mlab.com/api/1/databases/chappie/collections/'
-    //   .concat(CONFIG.OWNER).concat('/').concat(MLAB_DOCUMENT).concat('?apiKey=').concat(MLAB_APIKEY)
-    // Conseguir el Client ID de Twitch
-    clientID = settings.TWITCH_CLIENT_ID
-    // Conseguir el OAUTH de Twitch
-    // this.TWITCH_OAUTH = settings.TWITCH_OAUTH
-  })
-}).catch(function () {
-  // TODO: Implementar alerta por ausencia del archivo src/settings.json
-  // alert("ES NECESARIO TENER UN ARCHIVO LLAMADO SETTINGS.JSON EN LA CARPETA SRC");
-})
+
+const CREDENTIALS = JSON.parse(require('fs').readFileSync(CONFIG.credentials_path))
 
 /* ==================================*\
                 CONEXIÓN
 \* ================================= */
 var options = {
   options: {
-    debug: true // CONFIG.DEBUG
+    debug: CONFIG.debug || false
   },
   connection: {
     cluster: 'aws',
     reconnect: true
   },
   identity: {
-    username: CONFIG.BOT_NAME,
-    password: 'oauth:epjk8hx1qtk262s8kmhmagqujo61i2' // FIXME: Twitch Oauth
+    username: CONFIG.bot_name,
+    password: CREDENTIALS.TWITCH_OAUTH
   },
-  // FIXME: CONFIG.OWNER debe manejar varios canales, no sólo uno
-  channels: [CONFIG.OWNER, 'hekady', 'mery_soldier']
+  // TODO: CONFIG.OWNER debe manejar varios canales, no sólo uno
+  channels: [CONFIG.owner]
 }
 
 TMI.client.prototype.followHandler = function (self) {
@@ -56,7 +40,7 @@ TMI.client.prototype.followHandler = function (self) {
     // Si no existe la key con el nombre del canal, lo creamos
     if (!self._followers[channel]) self._followers[channel] = -1
     // Montamos la URL de la API de Twitch
-    let kraken = `https://api.twitch.tv/kraken/channels/${channel.substring(1)}/follows?client_id=${clientID}&limit=${limit}`
+    let kraken = `https://api.twitch.tv/kraken/channels/${channel.substring(1)}/follows?client_id=${CREDENTIALS.TWITCH_CLIENT_ID}&limit=${limit}`
     // Realizamos una petición para ver el número de followers
     fetch(kraken).then(res => res.json().then(function (info) {
       // Si sabemos cuantos seguidores tenía antes el canal ...
@@ -70,7 +54,7 @@ TMI.client.prototype.followHandler = function (self) {
           let safeLimit = 10
           // Reescribimos la URL
           // FIXME: Tiene que haber formas más optimizadas de hacer esto
-          kraken = `https://api.twitch.tv/kraken/channels/${channel.substring(1)}/follows?client_id=${clientID}&limit=${limit + safeLimit}`
+          kraken = `https://api.twitch.tv/kraken/channels/${channel.substring(1)}/follows?client_id=${CREDENTIALS.TWITCH_CLIENT_ID}&limit=${limit + safeLimit}`
           // Preguntamos de nuevo por los nuevos followers
           fetch(kraken).then(_res => _res.json().then(function (data) {
             let i = 0
@@ -92,7 +76,7 @@ TMI.client.prototype.followHandler = function (self) {
 const CLIENT = new TMI.client(options) // eslint-disable-line new-cap
 
 // Creamos un intervalo de repetición para la función de los followers
-setInterval(() => CLIENT.followHandler(CLIENT), CONFIG.FOLLOW_INTERVAL * 1000)
+setInterval(() => CLIENT.followHandler(CLIENT), CONFIG.follow_check_interval * 1000)
 
 module.exports = {
   CLIENT: CLIENT
