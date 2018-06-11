@@ -27,7 +27,8 @@
   "devDependencies": {
     "electromon": "^1.0.10",
     "electron": "^2.0.2",
-    "electron-packager": "^12.1.0"
+    "electron-packager": "^12.1.0",
+    "standard": "^11.0.1"
   },
   "dependencies": {
     "tmi.js": "^1.2.1"
