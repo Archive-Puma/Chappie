@@ -24,6 +24,7 @@ CLIENT.on('chat', function (canal, usuario, msg, self) {
       MSG[0] = MSG[0].substring(1)
       switch (MSG[0]) {
         case 'sillazo': COMMAND.sillazo(canal, usuario, MSG[1]); break
+        case 'duelo': COMMAND.duelo(canal, usuario['display-name'], MSG[1]); break
         default: break
       }
     }
