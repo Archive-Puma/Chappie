@@ -1,5 +1,5 @@
 {
-  "owner": "Suraei",
+  "owner": "paxelol",
   "bot_name": "ChappieTheBot",
   "pet": "panda",
   "follow_check_interval": 5,
@@ -12,9 +12,9 @@
       "Suraei",
       "ChappieTheBot",
       "Moobot",
-      "Nigthbot",
+      "Nightbot",
       "StreamElements"
   ],
-  "debug": true,
+  "debug": false,
   "credentials_path": "src/credentials.json"
 }

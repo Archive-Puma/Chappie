@@ -6,7 +6,7 @@
 :vhs: Clone me!
 ----
 Clone or download the Github project:
-```bash
+```sh
 git clone https://github.com/cosasdepuma/chappie.git Chappie
   or
 git clone https://gitlab.com/cosasdepuma/chappie.git Chappie
@@ -20,7 +20,7 @@ cd Chappie
 ```
 
 Install all the npm modules:
-```js
+```sh
 npm i
 ```
 
@@ -116,7 +116,7 @@ Current actions available are: **IDLE**, **ATTACK**, **GREETINGS**, **EAT**, **D
 
 :earth_africa: Scheme of contents
 ----
-```js
+```
 Chappie
  < Repository >
 |__ .img

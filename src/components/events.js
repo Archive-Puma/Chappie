@@ -2,8 +2,8 @@
                 LIBRERÍAS
 \* ================================= */
 const PET = require('../components/pet') // eslint-disable-line no-unused-vars
-// const CMD = require('../components/commands')
-const {CLIENT} = require('../components/twitch')
+const CLIENT = require('../components/twitch')
+const COMMAND = require('../components/commands')
 
 CLIENT.connect()
 
@@ -14,7 +14,19 @@ CLIENT.connect()
 CLIENT.on('chat', function (canal, usuario, msg, self) {
   // Evita leer sus propios mensajes
   if (!self) {
-    // CMD.greet(usuario['display-name']);
+    // Saludamos al usuario si es su primer mensaje
+    COMMAND.greet(usuario['display-name'])
+    // Parseamos el mensaje
+    const MSG = msg.trim().split(' ')
+    // Comprobamos si un comando ha sido enviado
+    if (MSG[0].charAt(0) === '!') {
+      // Le quitamos la exclamación
+      MSG[0] = MSG[0].substring(1)
+      switch (MSG[0]) {
+        case 'sillazo': COMMAND.sillazo(canal, usuario, MSG[1]); break
+        default: break
+      }
+    }
   }
 })
 

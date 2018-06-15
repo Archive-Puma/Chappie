@@ -78,9 +78,7 @@ const CLIENT = new TMI.client(options) // eslint-disable-line new-cap
 // Creamos un intervalo de repetición para la función de los followers
 setInterval(() => CLIENT.followHandler(CLIENT), CONFIG.follow_check_interval * 1000)
 
-module.exports = {
-  CLIENT: CLIENT
-}
+module.exports = CLIENT
 
 // ___________________________________________
 
