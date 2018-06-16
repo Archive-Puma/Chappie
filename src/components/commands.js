@@ -43,5 +43,12 @@ Commands.prototype.sillazo = function (canal, usuario, victima) {
         : randomQuote('sillazo-generic'))
   }
 }
+Commands.prototype.duelo = function (canal, usuario, victima) {
+  CLIENT.say(canal,randomQuote('preduel', { nombre: usuario, target: victima}))
+  CLIENT.say(canal,randomQuote('induel', {nombre: usuario, target: victima})) // TODO Solo funciona el primer target y poner aceptar y denegar y siempre gana el primero
+  CLIENT.say(canal,randomQuote('postduel', {
+    target: Math.floor(Math.random()*2) === 0 ? '@' + usuario : victima}))
+}
+
 
 module.exports = new Commands()
