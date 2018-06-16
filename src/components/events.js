@@ -15,7 +15,7 @@ CLIENT.on('chat', function (canal, usuario, msg, self) {
   // Evita leer sus propios mensajes
   if (!self) {
     // Saludamos al usuario si es su primer mensaje
-    COMMAND.greet(usuario['display-name'])
+    COMMAND.greet(canal, usuario['display-name'])
     // Parseamos el mensaje
     const MSG = msg.trim().split(' ')
     // Comprobamos si un comando ha sido enviado
@@ -27,6 +27,7 @@ CLIENT.on('chat', function (canal, usuario, msg, self) {
         // Comandos sólo para subs
           if (usuario.badges.subscriber) {
             switch (MSG[0]) {
+              case 'pet': COMMAND.pet(canal, PET, MSG[1]); break
               case 'sillazo': COMMAND.sillazo(canal, usuario, MSG[1]); break
               default: break
             }

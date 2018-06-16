@@ -7,6 +7,9 @@ class Pet {
     this.PET_ELEMENT = document.getElementById('pet')
     this.PET_SRC = '../resources/pets/'.concat(this.PET).concat('/')
 
+    this.AVAILABLE_PETS = [ 'panda', 'rabbit' ]
+    this.AVAILABLE_PETS_ALT = [ 'oso', 'conejo' ]
+
     // Pose predeterminada: Idle
     this.state = 'idle'
 
@@ -16,6 +19,11 @@ class Pet {
 
 Pet.prototype.setState = function (state) {
   this.state = state
+  this.changeGIF()
+}
+
+Pet.prototype.refresh = function () {
+  this.PET_SRC = '../resources/pets/'.concat(this.PET).concat('/')
   this.changeGIF()
 }
 
