@@ -13,16 +13,24 @@ module.exports = {
     '$owner y toda su comunidad quiere que sepas que te apreciamos y nos encanta verte por aquí, $user'
   ],
   'sillazo': [
-    'Sillazo $target'
-  ],
-  'sillazo-generic': [
-    'Sillazo genérico'
+    '$user se dispone a darle un sillazo a $target pero se tropezó en el intento y se hizo daño a si mismo.',
+    '$user está muy agresivo ultimamente con los sillazos, asi que las autoridades lo llevan a un correccional',
+    '$user coge la silla mas bonita que encuentra y la destroza encima de la cara de $target',
+    '$user lanza una silla a $target pero al final $user consigue esquivar el sillazo y le da a $target de su propia medicina',
+    '$user le da un sillazo a $target y le deja la cara tan fea que la sociedad ya no lo acepta',
+    '$user le da un sillazo a $target. No es especial, pero es un buen sillazo',
+    '$user valora si darle o no un sillazo a $target, pero mientras lo valora, @sw4t_alan le lanza una silla a $target, y otra a $user por ser un indeciso'
   ],
   'bad-target': [
-    'Necesitas poner el @'
+    'Necesitas poner el @ para realizar el comando, $user',
+    '$user, especifica un objetivo con usando el @',
+    'Necesitas indicar quién es tu objetivo nombrándolo con un @, $user'
   ],
   'no-subscriber': [
-    'Este comando es exclusivo para subs'
+    'Ese comando es exclusivo para subs, $user',
+    'Aquí no discriminamos a nadie, pero ese comando es sólo para subs, $user',
+    'Este comando es sólo para gente que se ha suscrito es este maravilloso canal, $user',
+    'Sólamente realizo ese tipo de comandos si me lo pide alguien que le ha dado al botón de suscribirse, $user'
   ],
   'preduel': [
     '$user quiere tener un duelo contigo $target, escribe !aceptar o !denegar',
@@ -48,7 +56,5 @@ module.exports = {
     'Los dos participantes han aparecido tirados en el suelo... parece que esta vez no habrá ningún ganador. Aunque... ¡Alguien se está levantando! , a pesar de la dureza de la batalla hay un ganador , ¡Enorabuena $target!',
     'Al cabo de un tiempo parece que nada cambia, los dos duelistas siguen en pie, aunque $target empieza a reirse fuertemente ¿Será que es el ganador?, ¡Y efectivamente, al cabo de unos segundos su rival no aguanta más y $target es la única persona en pie! ¡Enhorabuena!',
     'En esta batalla tenemos un claro vencedor, de hecho no ha estado para nada reñida, podría considerarse abuso... ¡ $target, enorabuena, ha sido increíble como lo has derrotado en un abrir y cerrar de ojos!'
-  ],
-
-
+  ]
 }

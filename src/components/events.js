@@ -23,9 +23,17 @@ CLIENT.on('chat', function (canal, usuario, msg, self) {
       // Le quitamos la exclamación
       MSG[0] = MSG[0].substring(1)
       switch (MSG[0]) {
-        case 'sillazo': COMMAND.sillazo(canal, usuario, MSG[1]); break
-        case 'duelo': COMMAND.duelo(canal, usuario['display-name'], MSG[1]); break
-        default: break
+        default:
+        // Comandos sólo para subs
+          if (usuario.badges.subscriber) {
+            switch (MSG[0]) {
+              case 'sillazo': COMMAND.sillazo(canal, usuario, MSG[1]); break
+              default: break
+            }
+          } else {
+            COMMAND.subCommandError(canal, usuario['display-name'])
+          }
+          break
       }
     }
   }
