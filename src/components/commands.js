@@ -1,3 +1,5 @@
+/* global XMLHttpRequest */
+
 const QUOTES = require('../components/quotes')
 const CONFIG = require('../components/config')
 const CLIENT = require('../components/twitch')
@@ -27,6 +29,28 @@ Commands.prototype.greet = function (canal, nombre) {
     CLIENT.say(canal, randomQuote('greetings', { usuario: nombre })) // FIXME: Implementar saludo
     this.GREETED_VIEWERS.push(usuario)
   }
+}
+
+Commands.prototype.followage = function (canal, author, usuario) {
+  const target = usuario || author['display-name']
+  const URL = `https://2g.be/twitch/following.php?user=${target}&channel=${canal.substring(1, canal.length)}&format=mwdhms`
+  var xmlHttp = new XMLHttpRequest()
+  xmlHttp.open('GET', URL, false) // false for synchronous request
+  xmlHttp.send(null)
+  let msg = xmlHttp.responseText
+  if (msg.includes('has been following')) {
+    msg = msg.replace('has been following', 'sigue a')
+      .replace('months', 'meses')
+      .replace('month', 'mes')
+      .replace('day', 'día')
+      .replace('hour', 'hora')
+      .replace('minute', 'minuto')
+      .replace('second', 'segundo')
+      .replace(' for ', ' desde hace ')
+  } else {
+    msg = msg.replace('is not following', 'no sigue a')
+  }
+  CLIENT.say(canal, msg)
 }
 
 Commands.prototype.pet = function (canal, PET, skin) {
