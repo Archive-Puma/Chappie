@@ -16,7 +16,7 @@ module.exports = {
     '$user se dispone a darle un sillazo a $target pero se tropezó en el intento y se hizo daño a si mismo.',
     '$user está muy agresivo ultimamente con los sillazos, asi que las autoridades lo llevan a un correccional',
     '$user coge la silla mas bonita que encuentra y la destroza encima de la cara de $target',
-    '$user lanza una silla a $target pero al final $user consigue esquivar el sillazo y le da a $target de su propia medicina',
+    '$user lanza una silla a $target pero al final $target consigue esquivar el sillazo y le da a $user de su propia medicina',
     '$user le da un sillazo a $target y le deja la cara tan fea que la sociedad ya no lo acepta',
     '$user le da un sillazo a $target. No es especial, pero es un buen sillazo',
     '$user valora si darle o no un sillazo a $target, pero mientras lo valora, @sw4t_alan le lanza una silla a $target, y otra a $user por ser un indeciso'
@@ -55,6 +55,6 @@ module.exports = {
     'Pasan las horas y no se sabe nada de los participantes... ¡Esperen! !Alguien ha aparecido victorioso! ... Y el gran vencedor de este duelo ha sido $target',
     'Los dos participantes han aparecido tirados en el suelo... parece que esta vez no habrá ningún ganador. Aunque... ¡Alguien se está levantando! , a pesar de la dureza de la batalla hay un ganador , ¡Enorabuena $target!',
     'Al cabo de un tiempo parece que nada cambia, los dos duelistas siguen en pie, aunque $target empieza a reirse fuertemente ¿Será que es el ganador?, ¡Y efectivamente, al cabo de unos segundos su rival no aguanta más y $target es la única persona en pie! ¡Enhorabuena!',
-    'En esta batalla tenemos un claro vencedor, de hecho no ha estado para nada reñida, podría considerarse abuso... ¡ $target, enorabuena, ha sido increíble como lo has derrotado en un abrir y cerrar de ojos!'
+    'En esta batalla tenemos un claro vencedor, de hecho no ha estado para nada reñida, podría considerarse abuso... ¡$target, enorabuena, ha sido increíble como lo has derrotado en un abrir y cerrar de ojos!'
   ]
 }

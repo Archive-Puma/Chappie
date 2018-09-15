@@ -6,6 +6,7 @@ const CLIENT = require('../components/twitch')
 
 class Commands {
   constructor () {
+    this.DUELS = {}
     this.GREETED_VIEWERS = []
   }
 }
@@ -79,6 +80,26 @@ Commands.prototype.sillazo = function (canal, usuario, victima) {
 
 Commands.prototype.subCommandError = function (canal, usuario) {
   CLIENT.say(canal, randomQuote('no-subscriber'), { usuario: usuario })
+}
+
+Commands.prototype.duel_request = function (canal, usuario, victima) {
+  if (!victima || victima[0] !== '@') {
+    CLIENT.say(canal, randomQuote('bad-target', { usuario: usuario['display-name'] }))
+  } else {
+    this.DUELS[victima.substring(1, victima.length)] = usuario['display-name']
+    CLIENT.say(canal, randomQuote('preduel', { usuario: usuario['display-name'], target: victima }))
+  }
+}
+
+Commands.prototype.duel_accept = function (canal, usuario) {
+  if (this.DUELS[usuario['display-name']] !== undefined) {
+    CLIENT.say(canal, randomQuote('induel', { usuario: usuario['display-name'], target: this.DUELS[usuario['display-name']] }))
+    let winner = (Math.random() < 0.5) ? usuario['display-name'] : this.DUELS[usuario['display-name']]
+    CLIENT.say(canal, randomQuote('postduel', { target: winner }))
+    this.DUELS[usuario['display-name']] = undefined
+  } else {
+    CLIENT.say(canal, 'Nadie te ha retado')
+  }
 }
 
 module.exports = new Commands()

@@ -23,6 +23,9 @@ CLIENT.on('chat', function (canal, usuario, msg, self) {
       // Le quitamos la exclamación
       MSG[0] = MSG[0].substring(1)
       switch (MSG[0]) {
+        case 'retar': COMMAND.duel_request(canal, usuario, MSG[1]); break
+        case 'aceptar': COMMAND.duel_accept(canal, usuario); break
+
         case 'followage': COMMAND.followage(canal, usuario, MSG[1]); break
         default:
         // Comandos sólo para subs
