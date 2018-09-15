@@ -33,8 +33,9 @@ CLIENT.on('chat', function (canal, usuario, msg, self) {
           if (usuario.badges.subscriber) {
             switch (MSG[0]) {
               case 'pet': COMMAND.pet(canal, PET, MSG[1]); break
-              case 'sillazo': COMMAND.sillazo(canal, usuario, MSG[1]); break
-              case 'animar': COMMAND.animar(canal, usuario, MSG[1], PET); break
+              case 'sillazo': COMMAND.sillazo(canal, usuario, MSG[1]); break // Sw4t_Alan
+              case 'animar': COMMAND.animar(canal, usuario, MSG[1], PET); break // Rafarquero
+              case 'bostezo': COMMAND.bostezo(canal, usuario, MSG[1]); break // Wusdrot
               default: break
             }
           } else {

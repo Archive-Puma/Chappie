@@ -126,4 +126,10 @@ Commands.prototype.animar = function (canal, usuario, victima, PET) {
   }
 }
 
+Commands.prototype.bostezo = function (canal, usuario, victima) {
+  if (!victima || victima[0] !== '@') {
+    CLIENT.say(canal, randomQuote('bad-target', { usuario: usuario['display-name'] }))
+  } else { CLIENT.say(canal, randomQuote('bostezo', { usuario: usuario['display-name'], target: victima })) }
+}
+
 module.exports = new Commands()

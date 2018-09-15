@@ -23,7 +23,7 @@ module.exports = {
   ],
   'bad-target': [
     'Necesitas poner el @ para realizar el comando, $user',
-    '$user, especifica un objetivo con usando el @',
+    '$user, especifica un objetivo usando el @',
     'Necesitas indicar quién es tu objetivo nombrándolo con un @, $user'
   ],
   'no-subscriber': [
@@ -70,5 +70,12 @@ module.exports = {
     '$user ve a $target desanimado y le da un abrazo enorme para que se sienta mejor',
     '$user invita a unas cervecitas a $target para subir los ánimos',
     '$user hace un gran baile motivacional para que asi $target se sienta mejor'
+  ],
+  'bostezo': [
+    '$user le bosteza en el oído a $target, acto seguido se va y le lanza un beso',
+    '$user bosteza contagiándole el bostezo a $target',
+    '$user bosteza e intenta pegarle el bostezo a $target, pero su fuerza de voluntad es tan grande que no le hace efecto',
+    '$user bosteza y le cae una silla en la cabeza, nadie entiende nada',
+    '$user mira a $target y ambos escuchan un estraño bostezo de fondo ¿Quién habrá sido?'
   ]
 }
