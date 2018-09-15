@@ -25,6 +25,7 @@ CLIENT.on('chat', function (canal, usuario, msg, self) {
       switch (MSG[0]) {
         case 'retar': COMMAND.duel_request(canal, usuario, MSG[1]); break
         case 'aceptar': COMMAND.duel_accept(canal, usuario); break
+        case 'denegar': COMMAND.duel_decline(canal, usuario); break
 
         case 'followage': COMMAND.followage(canal, usuario, MSG[1]); break
         default:
@@ -33,6 +34,7 @@ CLIENT.on('chat', function (canal, usuario, msg, self) {
             switch (MSG[0]) {
               case 'pet': COMMAND.pet(canal, PET, MSG[1]); break
               case 'sillazo': COMMAND.sillazo(canal, usuario, MSG[1]); break
+              case 'animar': COMMAND.animar(canal, usuario, MSG[1], PET); break
               default: break
             }
           } else {

@@ -73,7 +73,7 @@ Commands.prototype.pet = function (canal, PET, skin) {
 }
 
 Commands.prototype.sillazo = function (canal, usuario, victima) {
-  if (!victima) {
+  if (!victima || victima[0] !== '@') {
     CLIENT.say(canal, randomQuote('bad-target', { usuario: usuario['display-name'] }))
   } else { CLIENT.say(canal, randomQuote('sillazo', { usuario: usuario['display-name'], target: victima })) }
 }
@@ -94,11 +94,35 @@ Commands.prototype.duel_request = function (canal, usuario, victima) {
 Commands.prototype.duel_accept = function (canal, usuario) {
   if (this.DUELS[usuario['display-name']] !== undefined) {
     CLIENT.say(canal, randomQuote('induel', { usuario: usuario['display-name'], target: this.DUELS[usuario['display-name']] }))
+    let that = this
     let winner = (Math.random() < 0.5) ? usuario['display-name'] : this.DUELS[usuario['display-name']]
-    CLIENT.say(canal, randomQuote('postduel', { target: winner }))
+    that.DUELS[usuario['display-name']] = undefined
+    setTimeout(function () {
+      CLIENT.say(canal, randomQuote('postduel', { target: winner }))
+    }, 10000)
+  } else {
+    CLIENT.say(canal, randomQuote('noduel'))
+  }
+}
+
+Commands.prototype.duel_decline = function (canal, usuario) {
+  if (this.DUELS[usuario['display-name']] !== undefined) {
+    CLIENT.say(canal, randomQuote('reject-duel', { usuario: usuario['display-name'] }))
     this.DUELS[usuario['display-name']] = undefined
   } else {
-    CLIENT.say(canal, 'Nadie te ha retado')
+    CLIENT.say(canal, randomQuote('noduel'))
+  }
+}
+
+Commands.prototype.animar = function (canal, usuario, victima, PET) {
+  if (!victima || victima[0] !== '@') {
+    CLIENT.say(canal, randomQuote('bad-target', { usuario: usuario['display-name'] }))
+  } else {
+    PET.setState('dance')
+    setTimeout(function () {
+      PET.setState('idle')
+    }, 8000)
+    CLIENT.say(canal, randomQuote('animar', { usuario: usuario['display-name'], target: victima }))
   }
 }
 
