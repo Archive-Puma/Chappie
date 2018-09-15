@@ -5,6 +5,7 @@
   "main": "src/main.js",
   "scripts": {
     "test": "electromon src/main.js",
+    "build": "electron-packager .",
     "push": "git push github master && git push gitlab master"
   },
   "repository": {
